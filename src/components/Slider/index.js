@@ -6,7 +6,6 @@ import Swiper from "swiper";
 function Slider(props) {
     const [sliderSwiper, setSliderSwiper] = useState(null);
     const { bannerList } = props;
-
     useEffect(() => {
         if (bannerList.length && !sliderSwiper) {
             let newSliderSwiper = new Swiper(".slider-container", {
@@ -27,6 +26,7 @@ function Slider(props) {
                 <div className="swiper-wrapper">
                     {
                         bannerList.map(slider => {
+                           
                             return (
                                 <div className="swiper-slide" key={slider.imageUrl}>
                                     <div className="slider-nav">

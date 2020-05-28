@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "5075493",
+      "name": "网易云音乐",
+      "font_class": "music",
+      "unicode": "e502",
+      "unicode_decimal": 58626
+    },
+    {
       "icon_id": "6058292",
       "name": "耳机",
       "font_class": "erji",
