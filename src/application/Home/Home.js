@@ -11,8 +11,8 @@ function Home(props) {
     return (
         <div>
             <Top>
-                <span className="iconfont menu">&#xe6e0;</span>
-                <span className="iconfont title">&#xe502;</span>
+                <span className="iconfont menu">&#xe672;</span>
+                <span className="iconfont title">&#xe501;</span>
                 <span className="iconfont search">&#xe6e1;</span>
             </Top>
             <Tab>
