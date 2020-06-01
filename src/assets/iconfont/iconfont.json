@@ -6,11 +6,39 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1523093",
+      "name": "更多",
+      "font_class": "gengduo1",
+      "unicode": "e501",
+      "unicode_decimal": 58625
+    },
+    {
+      "icon_id": "3007142",
+      "name": "收 藏 (5)",
+      "font_class": "shoucang",
+      "unicode": "e6dc",
+      "unicode_decimal": 59100
+    },
+    {
+      "icon_id": "3764500",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
       "icon_id": "6058292",
       "name": "耳机",
       "font_class": "erji",
       "unicode": "e685",
       "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "8472473",
+      "name": "音乐",
+      "font_class": "yinle2",
+      "unicode": "e507",
+      "unicode_decimal": 58631
     },
     {
       "icon_id": "8694248",
@@ -20,6 +48,13 @@
       "unicode_decimal": 58994
     },
     {
+      "icon_id": "10344471",
+      "name": "返 回",
+      "font_class": "back",
+      "unicode": "e502",
+      "unicode_decimal": 58626
+    },
+    {
       "icon_id": "10678434",
       "name": "search",
       "font_class": "search",
@@ -27,11 +62,25 @@
       "unicode_decimal": 59105
     },
     {
+      "icon_id": "10964406",
+      "name": "评 论 (1)",
+      "font_class": "pinglun",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "12198494",
+      "name": "心 爱心",
+      "font_class": "xinaixin",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
       "icon_id": "13042548",
       "name": "网易云音乐",
       "font_class": "wangyiyunyinle",
-      "unicode": "e501",
-      "unicode_decimal": 58625
+      "unicode": "e503",
+      "unicode_decimal": 58627
     }
   ]
 }

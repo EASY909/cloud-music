@@ -7,6 +7,8 @@ import { Content } from "./style";
 import { connect } from "react-redux";
 import { forceCheck } from 'react-lazyload';
 import Loading from '../../baseUI/loading/index';
+import { renderRoutes } from 'react-router-config';
+
 function Recommend(props) {
 
 
@@ -35,6 +37,8 @@ function Recommend(props) {
                 </Scroll>
 
                 {enterLoading ? <Loading></Loading> : null}
+
+                {renderRoutes(props.route.routes)}
             </Content>
         </div>
     )
