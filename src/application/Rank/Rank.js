@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { getRankList } from './store/index'
 import { filterIndex } from '../../api/utils';
-import{List,ListItem,Container,SongList} from "./style"
+import { List, ListItem, Container, SongList } from "./style"
 import Loading from '../../baseUI/loading';
 import Scroll from '../../baseUI/scroll/index';
-
+import { renderRoutes } from 'react-router-config';
 import { EnterLoading } from './../Singers/style';
 
 
@@ -24,14 +24,16 @@ function Rank(props) {
     let officialList = rankList.slice(0, globalStartIndex);
     let globalList = rankList.slice(globalStartIndex);
 
-
+    const enterDetail = (detail) => {
+        props.history.push(`/rank/${detail.id}`)
+    }
     const renderRankList = (list, global) => {
         return (
             <List globalRank={global}>
                 {
                     list.map((item) => {
                         return (
-                            <ListItem key={item.coverImgId} tracks={item.tracks} >
+                            <ListItem key={item.coverImgId} onClick={() => enterDetail(item)} tracks={item.tracks} >
                                 <div className="img_wrapper">
                                     <img src={item.coverImgUrl} alt="" />
                                     <div className="decorate"></div>
@@ -42,6 +44,7 @@ function Rank(props) {
                         )
                     })
                 }
+
             </List>
         )
     }
@@ -74,7 +77,7 @@ function Rank(props) {
                     {loading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
                 </div>
             </Scroll>
-            {/* {renderRoutes(props.route.routes)} */}
+            {renderRoutes(props.route.routes)}
         </Container>
     );
 }
