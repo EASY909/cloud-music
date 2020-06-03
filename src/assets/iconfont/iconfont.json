@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "159572",
+      "name": "顺序播放",
+      "font_class": "shunxubofang",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "1100609",
+      "name": "循环播放",
+      "font_class": "xunhuanbofang",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
       "icon_id": "1523093",
       "name": "更多",
       "font_class": "gengduo1",
@@ -13,11 +27,25 @@
       "unicode_decimal": 58625
     },
     {
+      "icon_id": "2985057",
+      "name": "音频-上下一曲",
+      "font_class": "icon-next-1",
+      "unicode": "e502",
+      "unicode_decimal": 58626
+    },
+    {
       "icon_id": "3007142",
       "name": "收 藏 (5)",
       "font_class": "shoucang",
       "unicode": "e6dc",
       "unicode_decimal": 59100
+    },
+    {
+      "icon_id": "3041060",
+      "name": "音频-上下一曲",
+      "font_class": "icon-next-11",
+      "unicode": "e579",
+      "unicode_decimal": 58745
     },
     {
       "icon_id": "3764500",
@@ -32,6 +60,13 @@
       "font_class": "erji",
       "unicode": "e685",
       "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "7503185",
+      "name": "播放列表",
+      "font_class": "bofangliebiao",
+      "unicode": "e691",
+      "unicode_decimal": 59025
     },
     {
       "icon_id": "8472473",
@@ -51,8 +86,8 @@
       "icon_id": "10344471",
       "name": "返 回",
       "font_class": "back",
-      "unicode": "e502",
-      "unicode_decimal": 58626
+      "unicode": "e503",
+      "unicode_decimal": 58627
     },
     {
       "icon_id": "10678434",
@@ -69,6 +104,20 @@
       "unicode_decimal": 58976
     },
     {
+      "icon_id": "11020408",
+      "name": "随机播放",
+      "font_class": "suijibofang",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "11353859",
+      "name": "下  拉",
+      "font_class": "xiala",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
       "icon_id": "12198494",
       "name": "心 爱心",
       "font_class": "xinaixin",
@@ -79,8 +128,8 @@
       "icon_id": "13042548",
       "name": "网易云音乐",
       "font_class": "wangyiyunyinle",
-      "unicode": "e503",
-      "unicode_decimal": 58627
+      "unicode": "e504",
+      "unicode_decimal": 58628
     }
   ]
 }
