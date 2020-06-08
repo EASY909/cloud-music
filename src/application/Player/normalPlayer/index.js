@@ -8,19 +8,17 @@ import {
     Bottom,
     Operators,
     CDWrapper,
+    ProgressWrapper
 } from "./style";
 import animations from "create-keyframe-animation";
-import { prefixStyle } from "../../../api/utils";
-
+import { prefixStyle,formatPlayTime } from "../../../api/utils";
+import ProgressBar from "../../../baseUI/progressBar";
 
 
 function NormalPlayer(props) {
-    const { song, fullScreen } = props;
-    const { toggleFullScreenDispatch } = props;
+    const { song, fullScreen, playing, percent, duration, currentTime } = props;
+    const { toggleFullScreen, clickPlaying, onProgressChange } = props;
 
-    const {
-        toggleFullScreen
-    } = props;
 
     const normalPlayerRef = useRef();
     const cdWrapperRef = useRef();
@@ -42,6 +40,7 @@ function NormalPlayer(props) {
             scale
         };
     };
+
     const enter = () => {
         normalPlayerRef.current.style.display = "block";
         const { x, y, scale } = _getPosAndScale();//获取miniPlayer图片中心相对normalPlayer唱片中心的偏移
@@ -121,7 +120,7 @@ function NormalPlayer(props) {
                     <CDWrapper>
                         <div className="cd">
                             <img
-                                className="image play"
+                                className={`image play ${playing ? "" : "pause"}`}
                                 src={song.al.picUrl + "?param=400x400"}
                                 alt=""
                             />
@@ -129,6 +128,16 @@ function NormalPlayer(props) {
                     </CDWrapper>
                 </Middle>
                 <Bottom className="bottom">
+                    <ProgressWrapper>
+                        <span className="time time-l">{formatPlayTime(currentTime)}</span>
+                        <div className="progress-bar-wrapper">
+                            <ProgressBar
+                                percent={percent}
+                                percentChange={onProgressChange}
+                            ></ProgressBar>
+                        </div>
+                        <div className="time time-r">{formatPlayTime(duration)}</div>
+                    </ProgressWrapper>
                     <Operators>
                         <div className="icon i-left" >
                             <i className="iconfont">&#xe625;</i>
@@ -137,8 +146,17 @@ function NormalPlayer(props) {
                             <i className="iconfont">&#xe502;</i>
                         </div>
                         <div className="icon i-center">
-                            <i className="iconfont">&#xe695;</i>
+                            <i
+                                className="iconfont"
+                                onClick={e => clickPlaying(e, !playing)}
+                                dangerouslySetInnerHTML={{
+                                    __html: playing ? "&#xe695;" : "&#xe731;"
+                                }}
+                            ></i>
                         </div>
+                        {/* <div className="icon i-center">
+                            <i className="iconfont">&#xe695;</i>
+                        </div> */}
                         <div className="icon i-right">
                             <i className="iconfont">&#xe579;</i>
                         </div>
