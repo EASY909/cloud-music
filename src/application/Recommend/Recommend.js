@@ -11,7 +11,7 @@ import { renderRoutes } from 'react-router-config';
 
 function Recommend(props) {
 
-
+    const { songsCount } = props;
     const { bannerList, recommendList, enterLoading } = props;
     const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
 
@@ -28,7 +28,7 @@ function Recommend(props) {
     const recommendListJS = recommendList ? recommendList.toJS() : [];
     return (
         <div>
-            <Content>
+            <Content play={songsCount}>
                 <Scroll className="list" onScroll={forceCheck}>
                     <div>
                         <Slider bannerList={bannerListJS}></Slider>
@@ -47,7 +47,8 @@ const mapStateToProps = (state) => {
     return {
         bannerList: state.getIn(['recommend', 'bannerList']),
         recommendList: state.getIn(['recommend', 'recommendList']),
-        enterLoading: state.getIn(['recommend', 'enterLoading'])
+        enterLoading: state.getIn(['recommend', 'enterLoading']),
+        songsCount: state.getIn (['player', 'playList']).size
     }
 }
 

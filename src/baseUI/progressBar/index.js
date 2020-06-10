@@ -90,8 +90,7 @@ function ProgressBar(props) {
   
   const progressTouchMove = (e) => {
     if(!touch.initiated) return;
-    //滑动距离   
-    console.log(e);
+    //滑动距离  
     const deltaX = e.touches[0].pageX - touch.startX;
     const barWidth = progressBar.current.clientWidth - progressBtnWidth; 
     const offsetWidth = Math.min(Math.max(0, touch.left + deltaX), barWidth);

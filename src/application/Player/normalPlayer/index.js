@@ -11,19 +11,31 @@ import {
     ProgressWrapper
 } from "./style";
 import animations from "create-keyframe-animation";
-import { prefixStyle,formatPlayTime } from "../../../api/utils";
+import { prefixStyle, formatPlayTime } from "../../../api/utils";
 import ProgressBar from "../../../baseUI/progressBar";
-
-
+import { playMode } from '../../../api/config';
+import { LyricContainer, LyricWrapper } from "./style";
+import Scroll from "../../../baseUI/scroll";
 function NormalPlayer(props) {
-    const { song, fullScreen, playing, percent, duration, currentTime } = props;
-    const { toggleFullScreen, clickPlaying, onProgressChange } = props;
-
+    const { song, fullScreen, playing, percent, duration, currentTime, mode } = props;
+    const { togglePlayList, toggleFullScreen, clickPlaying, onProgressChange, handlePrev, handleNext, changeMode } = props;
 
     const normalPlayerRef = useRef();
     const cdWrapperRef = useRef();
+
+    const {
+        currentLineNum,
+        currentPlayingLyric,
+        currentLyric
+    } = props;
+
     // 组件代码中加入
     const transform = prefixStyle("transform");
+
+    const currentState = useRef("");
+    const lyricScrollRef = useRef();
+    const lyricLineRefs = useRef([]);
+
     const _getPosAndScale = () => {
         const targetWidth = 40;
         const paddingLeft = 40;
@@ -88,7 +100,27 @@ function NormalPlayer(props) {
         cdWrapperDom.style[transform] = "";
         normalPlayerRef.current.style.display = "none";
     };
+    const getPlayMode = () => {
+        let content;
+        if (mode === playMode.sequence) {
+            content = "&#xe625;";
+        } else if (mode === playMode.loop) {
+            content = "&#xe614;";
+        } else {
+            content = "&#xe670;";
+        }
+        return content;
+    };
+
+    const toggleCurrentState = () => {
+        if (currentState.current !== "lyric") {
+            currentState.current = "lyric";
+        } else {
+            currentState.current = "";
+        }
+    };
     return (
+
         <CSSTransition
             classNames="normal"
             in={fullScreen}
@@ -116,17 +148,58 @@ function NormalPlayer(props) {
                     <h1 className="title">{song.name}</h1>
                     <h1 className="subtitle">{getName(song.ar)}</h1>
                 </Top>
-                <Middle ref={cdWrapperRef}>
-                    <CDWrapper>
-                        <div className="cd">
-                            <img
-                                className={`image play ${playing ? "" : "pause"}`}
-                                src={song.al.picUrl + "?param=400x400"}
-                                alt=""
-                            />
-                        </div>
-                    </CDWrapper>
+
+                <Middle ref={cdWrapperRef} onClick={toggleCurrentState}>
+                    <CSSTransition
+                        timeout={400}
+                        classNames="fade"
+                        in={currentState.current !== "lyric"}
+                    >
+                        <CDWrapper style={{ visibility: currentState.current !== "lyric" ? "visible" : "hidden" }}>
+                            <div className="cd">
+                                <img
+                                    className={`image play ${playing ? "" : "pause"}`}
+                                    src={song.al.picUrl + "?param=400x400"}
+                                    alt=""
+                                />
+                            </div>
+                            <p className="playing_lyric">{currentPlayingLyric}</p>
+                        </CDWrapper>
+                    </CSSTransition>
+                    <CSSTransition
+                        timeout={400}
+                        classNames="fade"
+                        in={currentState.current === "lyric"}
+                    >
+                        <LyricContainer>
+                            <Scroll ref={lyricScrollRef}>
+                                <LyricWrapper
+                                    style={{ visibility: currentState.current === "lyric" ? "visible" : "hidden" }}
+                                    className="lyric_wrapper"
+                                >
+                                    {
+                                        currentLyric
+                                            ? currentLyric.lines.map((item, index) => {
+                                                lyricLineRefs.current[index] = React.createRef();
+                                                return (
+                                                    <p
+                                                        className={`text ${
+                                                            currentLineNum === index ? "current" : ""
+                                                            }`}
+                                                        key={item + index}
+                                                        ref={lyricLineRefs.current[index]}
+                                                    >
+                                                        {item.txt}
+                                                    </p>
+                                                );
+                                            })
+                                            : <p className="text pure">纯音乐，请欣赏。</p>}
+                                </LyricWrapper>
+                            </Scroll>
+                        </LyricContainer>
+                    </CSSTransition>
                 </Middle>
+
                 <Bottom className="bottom">
                     <ProgressWrapper>
                         <span className="time time-l">{formatPlayTime(currentTime)}</span>
@@ -139,28 +212,33 @@ function NormalPlayer(props) {
                         <div className="time time-r">{formatPlayTime(duration)}</div>
                     </ProgressWrapper>
                     <Operators>
-                        <div className="icon i-left" >
-                            <i className="iconfont">&#xe625;</i>
+                        <div className="icon i-left" onClick={changeMode}>
+                            <i
+                                className="iconfont"
+                                dangerouslySetInnerHTML={{ __html: getPlayMode() }}
+                            ></i>
                         </div>
-                        <div className="icon i-left">
-                            <i className="iconfont">&#xe502;</i>
+                        <div className="icon i-left" onClick={handlePrev}>
+                            <i
+                                className="iconfont"
+                            >&#xe502;</i>
                         </div>
                         <div className="icon i-center">
                             <i
                                 className="iconfont"
                                 onClick={e => clickPlaying(e, !playing)}
                                 dangerouslySetInnerHTML={{
-                                    __html: playing ? "&#xe695;" : "&#xe731;"
+                                    __html: playing ? "&#xe695;" : "&#xe60e;"
                                 }}
                             ></i>
                         </div>
                         {/* <div className="icon i-center">
                             <i className="iconfont">&#xe695;</i>
                         </div> */}
-                        <div className="icon i-right">
+                        <div className="icon i-right" onClick={handleNext}>
                             <i className="iconfont">&#xe579;</i>
                         </div>
-                        <div className="icon i-right">
+                        <div className="icon i-right" onClick={() => togglePlayList(true)}>
                             <i className="iconfont">&#xe691;</i>
                         </div>
                     </Operators>

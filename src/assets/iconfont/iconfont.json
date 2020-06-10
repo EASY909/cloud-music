@@ -48,9 +48,16 @@
       "unicode_decimal": 58745
     },
     {
-      "icon_id": "3764500",
+      "icon_id": "3408114",
       "name": "播放",
       "font_class": "bofang",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "3764500",
+      "name": "播放",
+      "font_class": "bofang1",
       "unicode": "e695",
       "unicode_decimal": 59029
     },
@@ -60,6 +67,13 @@
       "font_class": "erji",
       "unicode": "e685",
       "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "6678369",
+      "name": "单曲循环",
+      "font_class": "danquxunhuan",
+      "unicode": "e614",
+      "unicode_decimal": 58900
     },
     {
       "icon_id": "7503185",
@@ -81,6 +95,13 @@
       "font_class": "caidan",
       "unicode": "e672",
       "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "9218407",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
     },
     {
       "icon_id": "10344471",
@@ -116,6 +137,13 @@
       "font_class": "xiala",
       "unicode": "e621",
       "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "11430797",
+      "name": "删 除",
+      "font_class": "shanchu",
+      "unicode": "e637",
+      "unicode_decimal": 58935
     },
     {
       "icon_id": "12198494",

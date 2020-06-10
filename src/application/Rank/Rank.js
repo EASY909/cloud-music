@@ -13,7 +13,7 @@ function Rank(props) {
     const { rankList: list, loading } = props;
 
     const { getRankListDataDispatch } = props;
-
+    const { songsCount } = props;
     useEffect(() => {
         getRankListDataDispatch();
     }, []);
@@ -67,7 +67,7 @@ function Rank(props) {
 
 
     return (
-        <Container>
+        <Container play={songsCount}>
             <Scroll>
                 <div>
                     <h1 className="offical" style={displayStyle}> 官方榜 </h1>
@@ -82,10 +82,13 @@ function Rank(props) {
     );
 }
 
-const mapStateToProps = (state) => ({
-    rankList: state.getIn(['rank', 'rankList']),
-    loading: state.getIn(['rank', 'loading']),
-});
+const mapStateToProps = (state) => {
+    return {
+        rankList: state.getIn(['rank', 'rankList']),
+        loading: state.getIn(['rank', 'loading']),
+        songsCount: state.getIn(['player', 'playList']).size
+    }
+}
 // 映射 dispatch 到 props 上
 const mapDispatchToProps = (dispatch) => {
     return {
