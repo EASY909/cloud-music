@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef,useEffect } from "react";
 import { getName } from "../../../api/utils";
 import { CSSTransition } from "react-transition-group";
 import {
@@ -17,24 +17,36 @@ import { playMode } from '../../../api/config';
 import { LyricContainer, LyricWrapper } from "./style";
 import Scroll from "../../../baseUI/scroll";
 function NormalPlayer(props) {
-    const { song, fullScreen, playing, percent, duration, currentTime, mode } = props;
-    const { togglePlayList, toggleFullScreen, clickPlaying, onProgressChange, handlePrev, handleNext, changeMode } = props;
-
-    const normalPlayerRef = useRef();
-    const cdWrapperRef = useRef();
-
     const {
+        fullScreen,
+        song,
+        mode,
+        playing,
+        percent,
+        currentTime,
+        duration,
         currentLineNum,
         currentPlayingLyric,
         currentLyric
     } = props;
+    const {
+        changeMode,
+        handlePrev,
+        handleNext,
+        onProgressChange,
+        clickPlaying,
+        toggleFullScreen,
+        togglePlayList
+    } = props;
 
-    // 组件代码中加入
-    const transform = prefixStyle("transform");
-
+    const normalPlayerRef = useRef();
+    const cdWrapperRef = useRef();
     const currentState = useRef("");
     const lyricScrollRef = useRef();
     const lyricLineRefs = useRef([]);
+
+    const transform = prefixStyle("transform");
+
 
     const _getPosAndScale = () => {
         const targetWidth = 40;
@@ -52,6 +64,20 @@ function NormalPlayer(props) {
             scale
         };
     };
+
+    useEffect(() => {
+        if (!lyricScrollRef.current) return;
+        let bScroll = lyricScrollRef.current.getBScroll();
+        if (currentLineNum > 5) {
+            // 保持当前歌词在第5条的位置
+            let lineEl = lyricLineRefs.current[currentLineNum - 5].current;
+            bScroll.scrollToElement(lineEl, 1000);
+        } else {
+            // 当前歌词行数<=5, 直接滚动到最顶端
+            bScroll.scrollTo(0, 0, 1000);
+        }
+    }, [currentLineNum]);
+
 
     const enter = () => {
         normalPlayerRef.current.style.display = "block";

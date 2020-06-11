@@ -132,6 +132,13 @@
       "unicode_decimal": 58992
     },
     {
+      "icon_id": "11114226",
+      "name": "删除筛选项",
+      "font_class": "delete",
+      "unicode": "e504",
+      "unicode_decimal": 58628
+    },
+    {
       "icon_id": "11353859",
       "name": "下  拉",
       "font_class": "xiala",
@@ -156,8 +163,8 @@
       "icon_id": "13042548",
       "name": "网易云音乐",
       "font_class": "wangyiyunyinle",
-      "unicode": "e504",
-      "unicode_decimal": 58628
+      "unicode": "e505",
+      "unicode_decimal": 58629
     }
   ]
 }

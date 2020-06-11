@@ -60,12 +60,12 @@ function PlayList(props) {
 
     const onExitingCB = useCallback(() => {
         listWrapperRef.current.style["transition"] = "all 0.3s";
-        listWrapperRef.current.style[transform] = `translate3d (0px, 100%, 0px)`;
+        listWrapperRef.current.style[transform] = `translate3d(0px, 100%, 0px)`;
     }, [transform]);
 
     const onExitedCB = useCallback(() => {
         setIsShow(false);
-        listWrapperRef.current.style[transform] = `translate3d (0px, 100%, 0px)`;
+        listWrapperRef.current.style[transform] = `translate3d(0px, 100%, 0px)`;
     }, [transform]);
 
     const getCurrentIcon = (item) => {
@@ -137,7 +137,6 @@ function PlayList(props) {
         if (!canTouch || initialed) return;
         listWrapperRef.current.style["transition"] = "";
         setStartY(e.nativeEvent.touches[0].pageY);// 记录 y 值
-        console.log(e.nativeEvent.touches[0].pageY);
         setInitialed(true);
     };
     const handleTouchMove = (e) => {

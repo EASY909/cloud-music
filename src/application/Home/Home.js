@@ -13,7 +13,7 @@ function Home(props) {
             <Top>
                 <span className="iconfont menu">&#xe672;</span>
                 <span className="iconfont title">&#xe504;</span>
-                <span className="iconfont search">&#xe6e1;</span>
+                <span className="iconfont search" onClick={() => props.history.push('/search')}>&#xe6e1;</span>
             </Top>
             <Tab>
                 <NavLink to="/recommend" activeClassName="selected"><TabItem><span > 推荐 </span></TabItem></NavLink>

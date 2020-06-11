@@ -11,7 +11,7 @@ import style from "../../assets/global-style";
 import { getAlbumList, changeEnterLoading } from './store/actionCreators';
 import { isEmptyObject } from "./../../api/utils"
 import Loading from '../../baseUI/loading/index';
-
+import SongsList from '../SongList/SongList';
 function Album(props) {
     const [showStatus, setShowStatus] = useState(true);
     const [title, setTitle] = useState("歌单");
@@ -22,7 +22,7 @@ function Album(props) {
     const id = props.match.params.id;
 
 
-    const { currentAlbum: currentAlbumImmutable, enterLoading,songsCount } = props;
+    const { currentAlbum: currentAlbumImmutable, enterLoading, songsCount } = props;
     const { getAlbumDataDispatch } = props;
 
     useEffect(() => {
@@ -104,40 +104,6 @@ function Album(props) {
         )
     };
 
-    const renderSongList = () => {
-        return (
-            <SongList>
-                <div className="first_line">
-                    <div className="play_all">
-                        <i className="iconfont">&#xe695;</i>
-                        <span > 播放全部 <span className="sum">(共 {currentAlbum.tracks.length} 首)</span></span>
-                    </div>
-                    <div className="add_list">
-                        <i className="iconfont">&#xe6dc;</i>
-                        <span > 收藏 ({getCount(currentAlbum.subscribedCount)})</span>
-                    </div>
-                </div>
-                <SongItem>
-                    {
-                        currentAlbum.tracks.map((item, index) => {
-                            return (
-                                <li key={index}>
-                                    <span className="index">{index + 1}</span>
-                                    <div className="info">
-                                        <span>{item.name}</span>
-                                        <span>
-                                            {getName(item.ar)} - {item.al.name}
-                                        </span>
-                                    </div>
-                                </li>
-                            )
-                        })
-                    }
-                </SongItem>
-            </SongList>
-        )
-    }
-    console.log(props);
     return (
         <CSSTransition
             in={showStatus}
@@ -147,7 +113,7 @@ function Album(props) {
             unmountOnExit
             onExited={props.history.goBack}
         >
-            <Container  play={songsCount}>
+            <Container play={songsCount}>
                 <Header ref={headerEl} title={title} handleClick={handleBack} isMarquee={isMarquee}></Header>
                 {
                     !isEmptyObject(currentAlbum) ? (
@@ -155,7 +121,12 @@ function Album(props) {
                             <div>
                                 {renderTopDesc()}
                                 {renderMenu()}
-                                {renderSongList()}
+                                <SongsList
+                                    songs={currentAlbum.tracks}
+                                    collectCount={currentAlbum.subscribedCount}
+                                    showCollect={false}
+                                    showBackground={false}
+                                ></SongsList>
                             </div>
                         </Scroll>) : null
                 }
