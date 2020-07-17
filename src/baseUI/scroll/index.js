@@ -29,6 +29,8 @@ export const PullDownLoading = styled.div`
   z-index: 100;
 `;
 const Scroll = forwardRef((props, ref) => {
+  // console.log(11111);
+  
   const [bScroll, setBScroll] = useState();
 
   const scrollContaninerRef = useRef();
@@ -38,7 +40,7 @@ const Scroll = forwardRef((props, ref) => {
   const { pullUp, pullDown, onScroll } = props;
 
   let pullUpDebounce = useMemo(() => {
-    return debounce(pullUp, 3000)
+    return debounce(pullUp, 300)
   }, [pullUp]);
 
 
@@ -47,12 +49,12 @@ const Scroll = forwardRef((props, ref) => {
   // }, [pullDown]);
 
   let pullDownDebounce = useCallback(
-    debounce(pullDown, 3000)
+    debounce(pullDown, 300)
     , [pullDown]);
 
 
   useEffect(() => {
-
+ 
     const scroll = new BScroll(scrollContaninerRef.current, {
       scrollX: direction === "horizental",
       scrollY: direction === "vertical",
@@ -84,6 +86,7 @@ const Scroll = forwardRef((props, ref) => {
     if (!bScroll || !pullUp) return;
     const handlePullUp = () => {
       //判断是否滑动到了底部
+      // console.log(bScroll.maxScrollY);
       if (bScroll.y <= bScroll.maxScrollY + 100) {
         pullUpDebounce();
       }
@@ -112,6 +115,7 @@ const Scroll = forwardRef((props, ref) => {
 
 
   useEffect(() => {
+    // console.log(11111);
     if (refresh && bScroll) {
       bScroll.refresh();
     }

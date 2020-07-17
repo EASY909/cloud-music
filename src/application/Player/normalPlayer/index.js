@@ -129,11 +129,11 @@ function NormalPlayer(props) {
     const getPlayMode = () => {
         let content;
         if (mode === playMode.sequence) {
-            content = "&#xe625;";
+            content = "&#xe509;";
         } else if (mode === playMode.loop) {
-            content = "&#xe614;";
+            content = "&#xe506;";
         } else {
-            content = "&#xe670;";
+            content = "&#xe619;";
         }
         return content;
     };
@@ -247,14 +247,14 @@ function NormalPlayer(props) {
                         <div className="icon i-left" onClick={handlePrev}>
                             <i
                                 className="iconfont"
-                            >&#xe502;</i>
+                            >&#xe663;</i>
                         </div>
                         <div className="icon i-center">
                             <i
                                 className="iconfont"
                                 onClick={e => clickPlaying(e, !playing)}
                                 dangerouslySetInnerHTML={{
-                                    __html: playing ? "&#xe695;" : "&#xe60e;"
+                                    __html: playing ? "&#xe665;" : "&#xe666;"
                                 }}
                             ></i>
                         </div>
@@ -262,10 +262,10 @@ function NormalPlayer(props) {
                             <i className="iconfont">&#xe695;</i>
                         </div> */}
                         <div className="icon i-right" onClick={handleNext}>
-                            <i className="iconfont">&#xe579;</i>
+                            <i className="iconfont">&#xe617;</i>
                         </div>
                         <div className="icon i-right" onClick={() => togglePlayList(true)}>
-                            <i className="iconfont">&#xe691;</i>
+                            <i className="iconfont">&#xe664;</i>
                         </div>
                     </Operators>
                 </Bottom>

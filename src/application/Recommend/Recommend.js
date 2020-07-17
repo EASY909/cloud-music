@@ -24,6 +24,9 @@ function Recommend(props) {
         };
         //eslint-disable-next-line
     }, []);
+    const onScroll=(pos)=>{
+        console.log(pos);
+    }
     const bannerListJS = bannerList ? bannerList.toJS() : [];
     const recommendListJS = recommendList ? recommendList.toJS() : [];
     return (

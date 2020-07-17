@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-export const baseUrl = 'http://localhost:4000';
+// export const baseUrl = 'http://localhost:4000';
+const BASEURL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : process.env.REACT_APP_API;
 
 //axios 的实例及拦截器配置
 const axiosInstance = axios.create({
-  baseURL: baseUrl
+  baseURL: BASEURL
 });
 
 axiosInstance.interceptors.response.use(

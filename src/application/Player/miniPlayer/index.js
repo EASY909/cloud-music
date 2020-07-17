@@ -41,14 +41,14 @@ function MiniPlayer(props) {
                 <div className="control">
                     <ProgressCircle radius={32} percent={percent}>
                         {playing ?
-                            <i className="icon-mini iconfont icon-pause" onClick={e => clickPlaying(e, false)}>&#xe60e;</i>
+                            <i className="icon-mini iconfont icon-pause" onClick={e => clickPlaying(e, false)}>&#xe630;</i>
                             :
                             <i className="icon-mini iconfont icon-play" onClick={e => clickPlaying(e, true)}>&#xe66e;</i>
                         }
                     </ProgressCircle>
                 </div>
                 <div className="control" onClick={handleTogglePlayList}>
-                    <i className="iconfont">&#xe691;</i>
+                    <i className="iconfont">&#xe664;</i>
                 </div>
             </MiniPlayerContainer>
         </CSSTransition>

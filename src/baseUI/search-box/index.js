@@ -77,9 +77,9 @@ const SearchBox = (props) => {
 
     return (
         <SearchBoxWrapper>
-            <i className="iconfont icon-backs" onClick={() => props.back()}>&#xe503;</i>
+            <i className="iconfont icon-backs" onClick={() => props.back()}>&#xe502;</i>
             <input ref={queryRef} className="box" placeholder="搜索歌曲、歌手、专辑" value={query} onChange={handleChange} />
-            <i className="iconfont icon-deletes" onClick={clearQuery} style={displayStyle}>&#xe504;</i>
+            <i className="iconfont icon-deletes" onClick={clearQuery} style={displayStyle}>&#xe503;</i>
         </SearchBoxWrapper>
     )
 };

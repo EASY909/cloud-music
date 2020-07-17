@@ -11,9 +11,9 @@ function Home(props) {
     return (
         <div>
             <Top>
-                <span className="iconfont menu">&#xe672;</span>
-                <span className="iconfont title">&#xe504;</span>
-                <span className="iconfont search" onClick={() => props.history.push('/search')}>&#xe6e1;</span>
+                <span className="iconfont menu">&#xe507;</span>
+                <span className="iconfont title"><a href="http://www.easy909.xyz/vue_cloud_music">&#xe609;</a></span>
+                <span className="iconfont search" onClick={() => props.history.push('/search')}>&#xe65f;</span>
             </Top>
             <Tab>
                 <NavLink to="/recommend" activeClassName="selected"><TabItem><span > 推荐 </span></TabItem></NavLink>

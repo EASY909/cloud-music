@@ -41,6 +41,7 @@ function Album(props) {
         let percent = Math.abs(pos.y / minScrollY);
         let headerDom = headerEl.current;
         // 滑过顶部的高度开始变化
+        // console.log(pos.y);
         if (pos.y < minScrollY) {
             headerDom.style.backgroundColor = style["theme-color"];
             headerDom.style.opacity = Math.min(1, (percent - 1) / 2);
@@ -85,15 +86,15 @@ function Album(props) {
         return (
             <Menu>
                 <div>
-                    <i className="iconfont">&#xe660;</i>
+                    <i className="iconfont">&#xe65c;</i>
               评论
             </div>
                 <div>
-                    <i className="iconfont">&#xe649;</i>
+                    <i className="iconfont">&#xe615;</i>
               点赞
             </div>
                 <div>
-                    <i className="iconfont">&#xe6dc;</i>
+                    <i className="iconfont">&#xe668;</i>
               收藏
             </div>
                 <div>
